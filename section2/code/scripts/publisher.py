@@ -4,10 +4,10 @@ import rospy
 from aa274_s2.msg import MyMessage
 
 def publisher():
-    pub = rospy.Publisher('my_topic', MyMessage, queue_size=10)
-    rospy.init_node('my_node', anonymous=True)
-    rate = rospy.Rate(1)
-    while not rospy.is_shutdown():
+    pub = rospy.Publisher('my_topic', MyMessage, queue_size=10) #Name the topic, choose message to publish, and define queue size
+    rospy.init_node('my_node', anonymous=True) #initialization
+    rate = rospy.Rate(1) #Set message rate based on ros clock
+    while not rospy.is_shutdown(): #publish message while node is not shutdown
         my_message = MyMessage()
         pub.publish(my_message)
         rate.sleep()
